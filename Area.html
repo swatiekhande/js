@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Area Calculator</title>
+  <script>
+    // Function to calculate the area of a triangle
+    function calculateTriangleArea(base, height) {
+      return 0.5 * base * height;
+    }
+
+    // Function to calculate the area of a rectangle
+    function calculateRectangleArea(length, width) {
+      return length * width;
+    }
+
+    // Function to calculate the area of a circle
+    function calculateCircleArea(radius) {
+      return Math.PI * radius * radius;
+    }
+
+    // Function to display the calculated areas
+    function calculateAndDisplay() {
+      const triangleBase = parseFloat(document.getElementById('triangleBase').value);
+      const triangleHeight = parseFloat(document.getElementById('triangleHeight').value);
+      const rectangleLength = parseFloat(document.getElementById('rectangleLength').value);
+      const rectangleWidth = parseFloat(document.getElementById('rectangleWidth').value);
+      const circleRadius = parseFloat(document.getElementById('circleRadius').value);
+
+      const triangleArea = calculateTriangleArea(triangleBase, triangleHeight);
+      const rectangleArea = calculateRectangleArea(rectangleLength, rectangleWidth);
+      const circleArea = calculateCircleArea(circleRadius);
+
+      document.getElementById('triangleAreaResult').innerText = `Area of Triangle: ${triangleArea.toFixed(2)}`;
+      document.getElementById('rectangleAreaResult').innerText = `Area of Rectangle: ${rectangleArea.toFixed(2)}`;
+      document.getElementById('circleAreaResult').innerText = `Area of Circle: ${circleArea.toFixed(2)}`;
+    }
+  </script>
+</head>
+<body>
+  <h1>Area Calculator</h1>
+
+  <h2>Triangle</h2>
+  <label for="triangleBase">Base:</label>
+  <input type="number" id="triangleBase">
+  <label for="triangleHeight">Height:</label>
+  <input type="number" id="triangleHeight">
+  <button onclick="calculateAndDisplay()">Calculate Triangle Area</button>
+  <p id="triangleAreaResult"></p>
+
+  <h2>Rectangle</h2>
+  <label for="rectangleLength">Length:</label>
+  <input type="number" id="rectangleLength">
+  <label for="rectangleWidth">Width:</label>
+  <input type="number" id="rectangleWidth">
+  <button onclick="calculateAndDisplay()">Calculate Rectangle Area</button>
+  <p id="rectangleAreaResult"></p>
+
+  <h2>Circle</h2>
+  <label for="circleRadius">Radius:</label>
+  <input type="number" id="circleRadius">
+  <button onclick="calculateAndDisplay()">Calculate Circle Area</button>
+  <p id="circleAreaResult"></p>
+</body>
+</html>
