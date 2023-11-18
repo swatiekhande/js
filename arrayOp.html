@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Array Operations</title>
+</head>
+<body>
+    <h1>Array Operations</h1>
+    
+    <input type="text" id="inputArray" placeholder="Enter array elements separated by commas">
+    <button onclick="performOperations()">Perform Operations</button>
+    
+    <p id="originalArray"></p>
+    <p id="afterRemove"></p>
+    <p id="containsValue"></p>
+    <p id="emptyArray"></p>
+    
+    <!-- Buttons for specific functions -->
+    <button onclick="removeElementPrompt()">Remove Element</button>
+    <button onclick="checkValuePrompt()">Check Value</button>
+    <button onclick="emptyArrayPrompt()">Empty Array</button>
+    
+    <script>
+        let myArray = [];
+        
+        function removeElementPrompt() {
+            let elementToRemove = prompt("Enter an element to remove from the array:");
+            let elementToRemoveInt = parseInt(elementToRemove);
+            let index = myArray.indexOf(elementToRemoveInt);
+            if (index !== -1) {
+                myArray.splice(index, 1);
+            }
+            document.getElementById("afterRemove").textContent = "After removing element '" + elementToRemoveInt + "': " + myArray;
+        }
+        
+        function checkValuePrompt() {
+            let valueToCheck = parseInt(prompt("Enter a value to check if it exists in the array:"));
+            let index = myArray.indexOf(valueToCheck);
+            if (index !== -1) {
+                document.getElementById("containsValue").textContent = "Array contains '" + valueToCheck + "' at position " + index;
+            } else {
+                document.getElementById("containsValue").textContent = "Array does not contain '" + valueToCheck + "'";
+            }
+        }
+        
+        function emptyArray(arr) {
+            arr.length = 0;
+        }
+        
+        function performOperations() {
+            let inputArray = document.getElementById("inputArray").value;
+            myArray = inputArray.split(',').map(element => parseInt(element));
+            document.getElementById("originalArray").textContent = "Original Array: " + myArray;
+        }
+        
+        function emptyArrayPrompt() {
+            let emptyArrayOption = confirm("Do you want to empty the array? (OK for Yes, Cancel for No)");
+            if (emptyArrayOption) {
+                emptyArray(myArray);
+                document.getElementById("emptyArray").textContent = "Array after emptying: " + myArray;
+            }
+        }
+    </script>
+</body>
+</html>
