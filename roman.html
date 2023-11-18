@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Roman Numeral Converter</title>
+</head>
+<body>
+
+<h2>Roman Numeral Converter</h2>
+
+<p>Enter a number between 1 and 100:</p>
+<input type="number" id="inputNumber" min="1" max="100">
+<button onclick="convertToRoman()">Convert</button>
+
+<p>Roman Numeral Representation: <span id="result"></span></p>
+
+<script>
+function convertToRoman() {
+  const inputNumber = document.getElementById('inputNumber').value;
+
+  // Validate input within range
+  if (inputNumber < 1 || inputNumber > 100 || isNaN(inputNumber)) {
+    alert('Please enter a valid number between 1 and 100.');
+    return;
+  }
+
+  const romanNumerals = [
+    ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"],
+    ["", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"],
+    ["", "C"]
+  ];
+
+  let result = '';
+
+  if (inputNumber === 100) {
+    result = 'C';
+  } else {
+    const digits = inputNumber.toString().split('').reverse();
+    for (let i = 0; i < digits.length; i++) {
+      result = romanNumerals[i][parseInt(digits[i])] + result;
+    }
+  }
+
+  document.getElementById('result').innerText = result;
+}
+</script>
+
+</body>
+</html>
