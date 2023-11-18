@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Set Operations</title>
+</head>
+<body>
+    <h1><i>Set Operations</i></h1>
+    <h3>
+        <b>Set A:</b>
+        <input type="text" id="setAInput" placeholder="Enter elements in set A"><br><br>
+        <b>Set B:</b>
+        <input type="text" id="setBInput" placeholder="Enter elements in set B">
+    </h3><br><br>
+
+    <input type="button" value="Union (A ∪ B)" onclick="setUnionOp()"><br><br>
+    <input type="button" value="Intersection (A ∩ B)" onclick="setIntersectionOp()"><br><br>
+    <input type="button" value="Difference (A - B)" onclick="setDifferenceOp()"><br><br>
+    <input type="button" value="Check Subset" onclick="setSubsetCheck()"><br><br>
+
+    <div id="output"></div>
+
+    <script>
+        function getSetInput(inputId) {
+            const input = document.getElementById(inputId).value;
+            const set = new Set(input.split(' ').map(Number));
+            return set;
+        }
+
+        function setUnionOp() {
+            const setA = getSetInput('setAInput');
+            const setB = getSetInput('setBInput');
+            const unionSet = new Set([...setA, ...setB]);
+            document.getElementById('output').innerHTML = "Union of A and B is (" + Array.from(unionSet).join(' ') + ")";
+        }
+
+        function setIntersectionOp() {
+            const setA = getSetInput('setAInput');
+            const setB = getSetInput('setBInput');
+            const intersectionSet = new Set([...setA].filter(x => setB.has(x)));
+            
+            if (intersectionSet.size === 0) {
+                document.getElementById('output').innerHTML = "No intersection between sets A and B.";
+            } else {
+                document.getElementById('output').innerHTML = "Intersection of A and B is (" + Array.from(intersectionSet).join(' ') + ")";
+            }
+        }
+
+        function setDifferenceOp() {
+            const setA = getSetInput('setAInput');
+            const setB = getSetInput('setBInput');
+            const differenceSet = new Set([...setA].filter(x => !setB.has(x)));
+            
+            if (differenceSet.size === 0) {
+                document.getElementById('output').innerHTML = "No difference between sets A and B.";
+            } else {
+                document.getElementById('output').innerHTML = "Difference of A and B is (" + Array.from(differenceSet).join(' ') + ")";
+            }
+        }
+
+        function setSubsetCheck() {
+            const setA = getSetInput('setAInput');
+            const setB = getSetInput('setBInput');
+            const isSubset = [...setB].every(x => setA.has(x));
+            document.getElementById('output').innerHTML = isSubset ? "True" : "False";
+        }
+    </script>
+</body>
+</html>
