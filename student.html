@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Information Form</title>
+    <script>
+        function validateForm() {
+            // Get form values
+            const name = document.getElementById('name').value.trim();
+            const address = document.getElementById('address').value.trim();
+            const city = document.getElementById('city').value.trim();
+            const state = document.getElementById('state').value.trim();
+            const gender = document.querySelector('input[name="gender"]:checked');
+            const mobile = document.getElementById('mobile').value.trim();
+            const email = document.getElementById('email').value.trim();
+
+            // Regular expressions for validation
+            const namePattern = /^[A-Za-z\s]+$/;
+            const mobilePattern = /^[0-9]{10}$/;
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            // Error messages
+            let errorMessage = '';
+
+            if (!name.match(namePattern)) {
+                errorMessage += 'Please enter a valid name.\n';
+            }
+
+            if (!mobile.match(mobilePattern)) {
+                errorMessage += 'Please enter a valid 10-digit mobile number.\n';
+            }
+
+            if (!email.match(emailPattern)) {
+                errorMessage += 'Please enter a valid email address.\n';
+            }
+
+            if (!name || !address || !city || !state || !gender || !mobile || !email) {
+                errorMessage += 'Please fill in all the fields.\n';
+            }
+
+            if (errorMessage !== '') {
+                alert(errorMessage);
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <h1>Student Information Form</h1>
+    <form onsubmit="return validateForm()" action="congratulations.html" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br><br>
+
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address"><br><br>
+
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city"><br><br>
+
+        <label for="state">State:</label>
+        <input type="text" id="state" name="state"><br><br>
+
+        <label for="gender">Gender:</label>
+        <input type="radio" id="male" name="gender" value="male">
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="female">
+        <label for="female">Female</label><br><br>
+
+        <label for="mobile">Mobile Number:</label>
+        <input type="text" id="mobile" name="mobile"><br><br>
+
+        <label for="email">Email ID:</label>
+        <input type="text" id="email" name="email"><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Congratulations and Welcome</title>
+</head>
+<body>
+    <h1>Congratulations and Welcome!</h1>
+    <p>Your form has been submitted successfully.</p>
+    <!-- Add any additional content or message here -->
+</body>
+</html> -->
