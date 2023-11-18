@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Website Home Page</title>
+  <script>
+    function changeColorOnMouseOver() {
+      document.body.style.backgroundColor = 'lightblue';
+      document.querySelector('input').value = 'hover';
+    }
+
+    function revertColorOnMouseOut() {
+      document.body.style.backgroundColor = '';
+      document.querySelector('input').value = '';
+    }
+
+    function changeColorOnFocus() {
+      document.body.style.backgroundColor = 'lightgreen';
+      document.querySelector('input').value = 'clicked';
+    }
+
+    function revertColorOnBlur() {
+      document.body.style.backgroundColor = '';
+      document.querySelector('input').value = '';
+    }
+  </script>
+</head>
+<body>
+  <h1>Welcome to Our Website</h1>
+  <p>This is the home page of our website.</p>
+
+  <!-- Changing background color on mouse over and focus events -->
+  <div onmouseover="changeColorOnMouseOver()" onmouseout="revertColorOnMouseOut()">
+    <input type="text" onfocus="changeColorOnFocus()" onblur="revertColorOnBlur()" placeholder="Hover over me or focus on me">
+  </div>
+</body>
+</html>
