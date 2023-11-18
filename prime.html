@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Prime Number Checker</title>
+</head>
+<body>
+
+<h2>Prime Number Checker</h2>
+
+<p>Enter a number:</p>
+<input type="number" id="inputNumber" min="2">
+<button onclick="checkPrime()">Check Prime</button>
+
+<p id="result"></p>
+
+<script>
+function checkPrime() {
+  const inputNumber = document.getElementById('inputNumber').value;
+
+  // Validate input
+  if (inputNumber < 2 || isNaN(inputNumber)) {
+    alert('Please enter a valid number greater than 1.');
+    return;
+  }
+
+  let isPrime = true;
+
+  for (let i = 2; i <= Math.sqrt(inputNumber); i++) {
+    if (inputNumber % i === 0) {
+      isPrime = false;
+      break;
+    }
+  }
+
+  const result = document.getElementById('result');
+  if (isPrime) {
+    result.innerText = inputNumber + ' is a prime number.';
+  } else {
+    result.innerText = inputNumber + ' is not a prime number.';
+  }
+}
+</script>
+
+</body>
+</html>
