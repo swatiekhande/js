@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>String Comparison</title>
+  <script>
+    function compareStrings() {
+      const string1 = document.getElementById('string1').value;
+      const string2 = document.getElementById('string2').value;
+
+      // Method 1: Using === operator for strict equality comparison
+      const method1Result = string1 === string2 ? 'Strings are equal' : 'Strings are not equal (using ===)';
+
+      // Method 2: Using localeCompare() method
+      const method2Result = string1.localeCompare(string2) === 0 ? 'Strings are equal' : 'Strings are not equal (using localeCompare())';
+
+      // Method 3: Using comparison operator > or <
+      const method3Result = string1 > string2 ? 'First string is greater' : string1 < string2 ? 'Second string is greater' : 'Strings are equal (using > or <)';
+
+      // Display results
+      document.getElementById('method1Result').innerText = `Method 1: ${method1Result}`;
+      document.getElementById('method2Result').innerText = `Method 2: ${method2Result}`;
+      document.getElementById('method3Result').innerText = `Method 3: ${method3Result}`;
+    }
+  </script>
+</head>
+<body>
+  <h1>String Comparison</h1>
+
+  <label for="string1">Enter first string:</label>
+  <input type="text" id="string1"><br><br>
+
+  <label for="string2">Enter second string:</label>
+  <input type="text" id="string2"><br><br>
+
+  <button onclick="compareStrings()">Compare Strings</button><br><br>
+
+  <p id="method1Result"></p>
+  <p id="method2Result"></p>
+  <p id="method3Result"></p>
+</body>
+</html>
