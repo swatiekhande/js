@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>String Operations</title>
+  <script>
+    function reverseString() {
+      const inputString = document.getElementById('inputString').value;
+      const reversedString = inputString.split('').reverse().join('');
+      document.getElementById('reversedString').innerText = `Reversed String: ${reversedString}`;
+    }
+
+    function replaceCharacters() {
+      const inputString = document.getElementById('inputString').value;
+      const replacedString = inputString.replace(/a/g, '@').replace(/e/g, '#').replace(/i/g, '$').replace(/o/g, '!').replace(/u/g, '&');
+      document.getElementById('replacedString').innerText = `Replaced String: ${replacedString}`;
+    }
+
+    function isPalindrome() {
+      const inputString = document.getElementById('inputString').value.toLowerCase().replace(/[^a-zA-Z0-9]/g, '');
+      const reversedString = inputString.split('').reverse().join('');
+      const palindromeCheck = inputString === reversedString ? 'Yes, it is a palindrome.' : 'No, it is not a palindrome.';
+      document.getElementById('palindromeResult').innerText = `Palindrome Check: ${palindromeCheck}`;
+    }
+  </script>
+</head>
+<body>
+  <h1>String Operations</h1>
+
+  <label for="inputString">Enter a string:</label>
+  <input type="text" id="inputString"><br><br>
+
+  <button onclick="reverseString()">Reverse String</button>
+  <p id="reversedString"></p><br>
+
+  <button onclick="replaceCharacters()">Replace Characters</button>
+  <p id="replacedString"></p><br>
+
+  <button onclick="isPalindrome()">Check Palindrome</button>
+  <p id="palindromeResult"></p><br>
+</body>
+</html>
