@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Countdown Timer</title>
+  <script>
+    function startTimer() {
+      let seconds = 600; // 10 minutes
+      const timerDisplay = document.getElementById('timer');
+
+      const countdown = setInterval(() => {
+        const minutes = Math.floor(seconds / 60);
+        let remainingSeconds = seconds % 60;
+
+        remainingSeconds = remainingSeconds < 10 ? '0' + remainingSeconds : remainingSeconds;
+
+        timerDisplay.innerHTML = `Time Remaining: ${minutes}:${remainingSeconds}`;
+
+        if (seconds <= 0) {
+          clearInterval(countdown);
+          timerDisplay.innerHTML = 'Countdown finished!';
+        } else {
+          seconds--;
+        }
+      }, 1000); // Update every 1 second (1000 milliseconds)
+    }
+  </script>
+</head>
+<body>
+  <h1>Countdown Timer</h1>
+  <p id="timer">Time Remaining: 10:00</p>
+  <button onclick="startTimer()">Start Timer</button>
+</body>
+</html>
