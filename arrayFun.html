@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Array Operations</title>
+</head>
+<body>
+    <h1>Array Operations</h1>
+    
+    <input type="text" id="inputArray" placeholder="Enter array elements separated by commas">
+    <button onclick="performOperations()">Perform Operations</button>
+    
+    <p id="originalArray"></p>
+    <p id="appendObject"></p>
+    <p id="isArray"></p>
+    <p id="elementIndex"></p>
+    <p id="uniqueArray"></p>
+    
+    <!-- Buttons for specific functions -->
+    <button onclick="appendObjectPrompt()">Append Object</button>
+    <button onclick="checkIsArray()">Check if Array</button>
+    <button onclick="findElementIndex()">Find Element Index</button>
+    <button onclick="removeDuplicates()">Remove Duplicates</button>
+    
+    <script>
+        let myArray = [];
+        
+        function appendObjectPrompt() {
+            let objectValue = prompt("Enter the value for the object to append:");
+            myArray.push(objectValue);
+            document.getElementById("appendObject").textContent = "Object appended to array: " + objectValue;
+            document.getElementById("originalArray").textContent = "Original Array: " + JSON.stringify(myArray);
+        }
+        
+        function checkIsArray() {
+            let isArray = Array.isArray(myArray);
+            document.getElementById("isArray").textContent = "Is it an array? " + isArray;
+        }
+        
+        function findElementIndex() {
+            let elementToFind = prompt("Enter an element to find in the array:");
+            let index = myArray.indexOf(elementToFind);
+            document.getElementById("elementIndex").textContent = "Index of the element: " + index;
+        }
+        
+        function removeDuplicates() {
+            let uniqueArray = myArray.filter((elem, index, array) => {
+                return array.indexOf(elem) === index;
+            });
+            myArray = uniqueArray;
+            document.getElementById("uniqueArray").textContent = "Array after removing duplicates: " + JSON.stringify(uniqueArray);
+        }
+        
+        function performOperations() {
+            let inputArray = document.getElementById("inputArray").value;
+            myArray = inputArray.split(',').map(elem => elem.trim());
+            document.getElementById("originalArray").textContent = "Original Array: " + JSON.stringify(myArray);
+        }
+    </script>
+</body>
+</html>
