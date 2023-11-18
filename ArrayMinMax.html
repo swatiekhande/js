@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Largest and Smallest Numbers Finder</title>
+</head>
+<body>
+
+<h2>Largest and Smallest Numbers Finder</h2>
+
+<p>Enter numbers separated by commas:</p>
+<input type="text" id="inputNumbers">
+<button onclick="findLargestAndSmallest()">Find</button>
+
+<p>Largest Number: <span id="largestNumber"></span></p>
+<p>Smallest Number: <span id="smallestNumber"></span></p>
+
+<script>
+function findLargestAndSmallest() {
+  const inputNumbers = document.getElementById('inputNumbers').value;
+
+  // Split the input string into an array of numbers
+  const numbersArray = inputNumbers.split(',').map(Number);
+
+  if (!inputNumbers || !numbersArray.every(number => !isNaN(number))) {
+    alert('Please enter valid numbers separated by commas.');
+    return;
+  }
+
+  const largest = Math.max(...numbersArray);
+  const smallest = Math.min(...numbersArray);
+
+  document.getElementById('largestNumber').innerText = largest;
+  document.getElementById('smallestNumber').innerText = smallest;
+}
+</script>
+
+</body>
+</html>
